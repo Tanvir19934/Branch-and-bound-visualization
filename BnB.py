@@ -54,7 +54,7 @@ def branch_and_bound(model, var_names, binary_vars, model_sense = "max"):
     heapq.heapify(stack)  #we are going to traverse in best first manner
 
     #draw the branch and bound tree, start with root
-    dot = graphviz.Digraph('Branch and bound tree', comment='Branch and bound tree')
+    dot = graphviz.Digraph('Branch and bound tree', comment='Branch and bound tree', node_attr={'color': 'lightblue', 'style': 'filled'})
     dot.node('root_node', root_node.name)
 
     #loop through the stack
@@ -87,7 +87,7 @@ def branch_and_bound(model, var_names, binary_vars, model_sense = "max"):
 
                     status = left_node.relaxed_LP()
                     if status!= GRB.OPTIMAL:
-                        dot.node(f'{fractional_var}={math.floor(val)}', f'{fractional_var}={math.floor(val)}' + '\n' + 'infeasible', {'color': 'red'})
+                        dot.node(f'{fractional_var}={math.floor(val)}', f'{fractional_var}={math.floor(val)}' + '\n' + 'infeasible', {'fontcolor':'red'})
                         dot.edge(node.name, left_node.name)
                         continue    #Prune
                     elif status == GRB.OPTIMAL:
@@ -105,7 +105,7 @@ def branch_and_bound(model, var_names, binary_vars, model_sense = "max"):
 
                     status = right_node.relaxed_LP()
                     if status!= GRB.OPTIMAL:
-                        dot.node(f'{fractional_var}={math.ceil(val)}', f'{fractional_var}={math.ceil(val)}' + '\n' + 'infeasible', {'color': 'red'})
+                        dot.node(f'{fractional_var}={math.ceil(val)}', f'{fractional_var}={math.ceil(val)}' + '\n' + 'infeasible', {'fontcolor':'red'})
                         dot.edge(node.name, right_node.name)
                         continue    #Prune
                     elif status == GRB.OPTIMAL:
