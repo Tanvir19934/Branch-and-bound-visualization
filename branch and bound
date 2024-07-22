@@ -1,0 +1,27 @@
+// Branch and bound tree
+digraph "Branch and bound tree" {
+	node [color=lightblue style=filled]
+	root_node [label=root_node]
+	"x1=0" [label="x1=0"]
+	root_node -> "x1=0"
+	"x1=1" [label="x1=1"]
+	root_node -> "x1=1"
+	"x2=0" [label="x2=0"]
+	"x1=1" -> "x2=0"
+	"x2=1" [label="x2=1"]
+	"x1=1" -> "x2=1"
+	"x4=0" [label="x4=0"]
+	"x2=1" -> "x4=0"
+	"x4=1" [label="x4=1
+infeasible" fontcolor=red]
+	"x2=1" -> "x4=1"
+	"x3=0" [label="x3=0"]
+	"x4=0" -> "x3=0"
+	"x3=1" [label="x3=1
+infeasible" fontcolor=red]
+	"x4=0" -> "x3=1"
+	"x2=0" [label="x2=0
+feasible but worse"]
+	"x1=0" [label="x1=0
+feasible but worse"]
+}

@@ -122,7 +122,7 @@ def branch_and_bound(model, var_names, binary_vars, model_sense = "max"):
         print(f"Objective value: {best_node.obj_val}")
     else:
         print("No optimal solution found.")
-    dot.render('doctest-output/round-table.gv', view=True)
+    dot.render(filename='branch and bound', view=True, format = 'png')
 
 def main():
     branch_and_bound(model, var_names, binary_vars, model_sense)
