@@ -12,4 +12,6 @@ You can edit the problem definition in `gurobi_solution.py` file. Also, executin
 - `gurobipy 9.1.0` or higher to solve the LP relaxations
 - `graphviz` for visualization
 
+Sample output:
+
 ![sample output](branch_and_bound.png)
